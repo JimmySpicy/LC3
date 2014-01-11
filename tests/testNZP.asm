@@ -1,0 +1,10 @@
+	.ORIG x3000
+loop :	AND R0,R0,0
+	AND R1,R1,0
+	AND  R2,R2,0
+	ADD R0,R0,0
+	ADD R1,R1,-8
+	ADD R2,R2,9
+	ADD R0,R0,1
+	BR loop
+	.END
