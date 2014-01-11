@@ -188,6 +188,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(640,0)" to="(830,0)"/>
     <wire from="(740,170)" to="(740,180)"/>
     <wire from="(630,270)" to="(630,300)"/>
+    <wire from="(690,260)" to="(710,260)"/>
     <wire from="(720,80)" to="(720,120)"/>
     <wire from="(150,370)" to="(150,390)"/>
     <wire from="(200,620)" to="(210,620)"/>
@@ -201,8 +202,10 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(70,620)" to="(80,620)"/>
     <wire from="(300,390)" to="(310,390)"/>
     <wire from="(740,120)" to="(740,140)"/>
+    <wire from="(690,240)" to="(710,240)"/>
     <wire from="(540,160)" to="(540,180)"/>
     <wire from="(490,660)" to="(500,660)"/>
+    <wire from="(690,240)" to="(690,260)"/>
     <wire from="(750,180)" to="(790,180)"/>
     <wire from="(650,580)" to="(660,580)"/>
     <wire from="(750,120)" to="(790,120)"/>
@@ -216,6 +219,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(680,380)" to="(910,380)"/>
     <wire from="(550,460)" to="(560,460)"/>
     <wire from="(90,30)" to="(120,30)"/>
+    <wire from="(670,240)" to="(690,240)"/>
     <wire from="(680,660)" to="(690,660)"/>
     <wire from="(540,120)" to="(560,120)"/>
     <wire from="(530,540)" to="(540,540)"/>
@@ -268,7 +272,6 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(150,390)" to="(220,390)"/>
     <wire from="(50,90)" to="(50,400)"/>
     <wire from="(160,130)" to="(160,160)"/>
-    <wire from="(670,240)" to="(710,240)"/>
     <wire from="(340,580)" to="(350,580)"/>
     <wire from="(560,460)" to="(560,480)"/>
     <wire from="(750,100)" to="(790,100)"/>
@@ -585,6 +588,10 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="facing" val="east"/>
       <a name="width" val="16"/>
       <a name="label" val="R1"/>
+    </comp>
+    <comp lib="0" loc="(710,260)" name="Tunnel">
+      <a name="width" val="16"/>
+      <a name="label" val="MemIN"/>
     </comp>
     <comp lib="0" loc="(200,580)" name="Tunnel">
       <a name="facing" val="east"/>
