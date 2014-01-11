@@ -1,4 +1,4 @@
-	.ORIG x3000
+	.ORIG x0000
 	ADD R0,R0, 4
 	ADD R1,R1,1
 	JMP R0

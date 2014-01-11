@@ -4,22 +4,20 @@ LC3
 LC-3 processor
 ===
 
+#First comment
+You may find weird additions about PC : I put a "Power" as an initial Carry, computing PC+1+X where sometimes the instruction set tells PC+X.  
+In fact, this is because PC is incremented in the Exec phase. In the LC3 convention, it should be incremented during the fetch. So if I don't add this extra 1, all values are shift by 1 frame up.  
+
 #Instructions
 
 ##LEA
-not implemented
+LEA is implemented in the module LoadAddr and the following multiplexer.
 
-##LDR
-not implemented
+##LD / LDR
+LD and LDR are implemented in the module GetAddr (for the adress) and via the multiplexer at the top of Registres, selecting MemOut (the output of LoadAddr).
 
-##STR
-not implemented
-
-##LD
-not implemented
-
-##ST
-not implemented
+##ST / STR
+ST and STR are implemented in the module GetAddr (for the adress) and MemIN is taken from the bottom/right output of Registres.
 
 ##BR
 BR is implemented in the RegPC circuit
@@ -47,9 +45,9 @@ not implemented
 #Modules
 
 ##DecodeIR
-DecodeIR has been completed simply by testing bits 13-12 (meaning the second part of the op-code). They give the family of the instruction : 01 for Arith, 00 for Jump, 10 for Load, 11 for Store.  
-At the beginning, I was using AND gates with NOT for the 0. Thus, Arith was 
-*AND(NOT(13),12)*. But I changed this for NOR gates, using the dual thought : Arith is *NOR(13,NOT(12))*.  
+DecodeIR has been completed simply by testing bits 13-12 (meaning the second part of the op-code). They give the family of the instruction : 01 for Arith, 00 for Jump, 10 for Load, 11 for Store.    
+At the beginning, I was using AND gates with NOT for the 0. Thus, Arith was   
+*AND(NOT(13),12)*. But I changed this for NOR gates, using the dual thought : Arith is *NOR(13,NOT(12))*.    
 WriteReg is active if the instruction is a Load or an Arith.
 
 ##NZP
@@ -64,17 +62,25 @@ I added 1 input and 1 output : the previous overflow state, and the overflow gen
 The overflow register can take two values : 
 * 1 if an ADD or ADC has generated an overflow.
 * 0 for all others operations modifying NZP : other ARITH and JUMPS.
-I should test if the current operation if ADD or ADC in order to choose the next state : that's the goal of the multiplexer, whose selecting bit is the result of a checking on the op-code.
-But the next state may not be written : the register is updated only if we have an NZP instruction or an ADD/ADC (but they are NZP instructions too).
+I should test if the current operation if ADD or ADC in order to choose the next state : that's the goal of the multiplexer, whose selecting bit is the result of a checking on the op-code.  
+But the next state may not be written : the register is updated only if we have an NZP instruction or an ADD/ADC (but they are NZP instructions too).  
 Finally, the state is directed to an output.
 
 ##RegPC 
 First, RegPC computes PC+1. We then compute PC+[SEXT(off9)] for BR. I placed a multiplexer here, because if BR's test fails, the next adresse should be PC+1 anyway. 
-We check after what kind of jump we have thanks to the opcode, controlling a plexer : if it is a BR, we choose either PC+1 of PC+[SEXT-off9)], depending on the previous result; if it is a JMP, we just choose the register. 
-Finally, a third multiplexer chosses the final value of PC : if the instruction is not even a jump, the new PC should be PC+1. Otherwise, it takes the previous value : PC+1 (BR failed), PC+SEXT(off9) (BR matches), Reg (JMP).
+We check after what kind of jump we have thanks to the opcode, controlling a plexer : if it is a BR, we choose either PC+1 of PC+[SEXT-off9)], depending on the previous result; if it is a JMP, we just choose the register.  
+Finally, a third multiplexer chosses the final value of PC : if the instruction is not even a jump, the new PC should be PC+1. Otherwise, it takes the previous value : PC+1 (BR failed), PC+[SEXT(off9)] (BR matches), Reg (JMP).
 
 ##GetAddr
+All possible adresses are computed :   
+* PC+[SEXT(off9)], for LD/ST
+* BR+[SEXT(off6)], for LDR/STR
+* PC+1 (inherited), for other cases (except LDI/STI, not implemented)
+A selection is performed on PC+[SEXT(off9)] and BR+[SEXT(off6)] if the op-code looks like more LD/ST or LDR/STR, thanks to a multiplexer. Then I check if the current instruction needs to access memory (op-code 0010, 0011, 0110, 0111) and if we are in a memory acess phase (fetch). In this case, the output is the filtered address. Otherwise, it is PC+1.
 
+##LoadAddr
+During a load instruction, we must be aware of the data we should write into a register : in case of LEA, it is simply PC+[SEXT(off9)], for LD/LDR it is the content given by the memory (the frame is computed by GetAddr, and is tunneled via MemOut).  
+TO make the choice, we simply check if the current instruction is LEA (the bits 15 and 14 are both 1) or not. The output is the filtered data, and will be choosen as "result" for a register in case of Load instruction.
 
 ===
 #Tests

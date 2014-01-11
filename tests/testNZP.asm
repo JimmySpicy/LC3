@@ -1,4 +1,4 @@
-	.ORIG x3000
+	.ORIG x0000
 loop :	AND R0,R0,0
 	AND R1,R1,0
 	AND  R2,R2,0

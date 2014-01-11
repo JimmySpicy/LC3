@@ -1,4 +1,4 @@
-	.ORIG x3000
+	.ORIG x0000
 	ADD R0,R0, -2
 	ADD R6,R6,14
 ret:	ADD R0,R0,1
