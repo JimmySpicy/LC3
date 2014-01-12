@@ -649,6 +649,11 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <comp lib="6" loc="(691,619)" name="Text">
       <a name="text" val="Arret des traces au 1er NOP"/>
     </comp>
+    <comp lib="0" loc="(550,310)" name="Probe">
+      <a name="radix" val="16"/>
+      <a name="label" val="CST"/>
+      <a name="labelloc" val="north"/>
+    </comp>
     <comp lib="6" loc="(79,415)" name="Text"/>
     <comp lib="0" loc="(340,620)" name="Tunnel">
       <a name="facing" val="east"/>
@@ -995,11 +1000,6 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="label" val="Condition"/>
     </comp>
     <comp loc="(550,340)" name="GetCst"/>
-    <comp lib="0" loc="(550,310)" name="Probe">
-      <a name="radix" val="16"/>
-      <a name="label" val="CST"/>
-      <a name="labelloc" val="north"/>
-    </comp>
     <comp lib="4" loc="(430,280)" name="Register">
       <a name="width" val="16"/>
       <a name="trigger" val="falling"/>
