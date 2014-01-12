@@ -242,7 +242,6 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(160,220)" to="(160,280)"/>
     <wire from="(210,330)" to="(250,330)"/>
     <wire from="(240,70)" to="(240,190)"/>
-    <wire from="(960,420)" to="(960,470)"/>
     <wire from="(510,470)" to="(520,470)"/>
     <wire from="(640,0)" to="(640,20)"/>
     <wire from="(250,330)" to="(250,360)"/>
@@ -291,7 +290,6 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(340,580)" to="(350,580)"/>
     <wire from="(560,460)" to="(560,480)"/>
     <wire from="(750,100)" to="(790,100)"/>
-    <wire from="(930,470)" to="(960,470)"/>
     <wire from="(430,280)" to="(460,280)"/>
     <wire from="(830,0)" to="(830,360)"/>
     <wire from="(150,130)" to="(160,130)"/>
@@ -340,7 +338,6 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(150,300)" to="(160,300)"/>
     <wire from="(330,220)" to="(330,280)"/>
     <wire from="(720,220)" to="(750,220)"/>
-    <wire from="(680,310)" to="(750,310)"/>
     <wire from="(670,430)" to="(830,430)"/>
     <wire from="(430,440)" to="(430,450)"/>
     <wire from="(590,220)" to="(590,240)"/>
@@ -653,9 +650,6 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="text" val="Arret des traces au 1er NOP"/>
     </comp>
     <comp lib="6" loc="(79,415)" name="Text"/>
-    <comp lib="0" loc="(750,310)" name="Tunnel">
-      <a name="label" val="Exec"/>
-    </comp>
     <comp lib="0" loc="(340,620)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="width" val="16"/>
@@ -844,10 +838,6 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="output" val="true"/>
       <a name="width" val="16"/>
     </comp>
-    <comp lib="0" loc="(930,470)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="WriteReg"/>
-    </comp>
     <comp lib="0" loc="(510,470)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="label" val="Exec"/>
@@ -1024,7 +1014,6 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <a name="clabelfont" val="SansSerif plain 16"/>
     <appear>
       <polyline fill="none" points="160,104 172,110 160,116" stroke="#000000"/>
-      <rect fill="#ffffff" height="116" stroke="#ff0000" stroke-width="2" width="110" x="50" y="50"/>
       <polyline fill="none" points="63,50 70,62 77,50" stroke="#000000"/>
       <polyline fill="none" points="50,84 62,90 50,96" stroke="#000000"/>
       <polyline fill="none" points="50,134 62,140 50,146" stroke="#000000"/>
@@ -1036,6 +1025,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <polyline fill="none" points="160,144 172,150 160,156" stroke="#000000"/>
       <polyline fill="none" points="161,125 151,129 161,134" stroke="#000000"/>
       <polyline fill="none" points="158,53 147,58 158,65" stroke="#000000"/>
+      <rect fill="#ffffff" height="116" stroke="#000000" stroke-width="2" width="110" x="49" y="49"/>
       <circ-port height="8" pin="250,210" width="8" x="46" y="96"/>
       <circ-port height="8" pin="260,550" width="8" x="46" y="136"/>
       <circ-port height="8" pin="250,150" width="8" x="66" y="46"/>
@@ -1044,7 +1034,6 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <circ-port height="10" pin="510,650" width="10" x="165" y="105"/>
       <circ-port height="10" pin="870,450" width="10" x="165" y="145"/>
       <circ-port height="8" pin="210,440" width="8" x="156" y="126"/>
-      <circ-port height="8" pin="820,230" width="8" x="156" y="56"/>
       <circ-anchor facing="east" height="6" width="6" x="47" y="47"/>
     </appear>
     <wire from="(390,360)" to="(390,430)"/>
@@ -1068,12 +1057,10 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(350,150)" to="(350,200)"/>
     <wire from="(330,270)" to="(480,270)"/>
     <wire from="(330,350)" to="(330,480)"/>
-    <wire from="(810,230)" to="(820,230)"/>
     <wire from="(250,170)" to="(330,170)"/>
     <wire from="(610,450)" to="(650,450)"/>
     <wire from="(580,270)" to="(580,330)"/>
     <wire from="(360,250)" to="(360,330)"/>
-    <wire from="(810,230)" to="(810,430)"/>
     <wire from="(360,330)" to="(370,330)"/>
     <wire from="(330,480)" to="(370,480)"/>
     <wire from="(330,270)" to="(330,350)"/>
@@ -1126,11 +1113,6 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <comp lib="0" loc="(640,580)" name="Splitter">
       <a name="fanout" val="1"/>
       <a name="bit1" val="none"/>
-    </comp>
-    <comp lib="0" loc="(820,230)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="H"/>
     </comp>
     <comp lib="3" loc="(410,470)" name="Adder">
       <a name="width" val="16"/>
@@ -1303,7 +1285,7 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <polyline fill="none" points="93,100 100,112 107,100" stroke="#000000"/>
       <polyline fill="none" points="40,56 30,60 40,65" stroke="#000000"/>
       <polyline fill="none" points="39,77 31,80 40,84 40,83" stroke="#000000"/>
-      <rect fill="none" height="58" stroke="#000000" stroke-width="2" width="80" x="40" y="41"/>
+      <rect fill="#ffffff" height="58" stroke="#000000" stroke-width="2" width="80" x="40" y="41"/>
       <circ-port height="8" pin="100,120" width="8" x="76" y="36"/>
       <circ-port height="10" pin="550,240" width="10" x="55" y="105"/>
       <circ-port height="10" pin="690,580" width="10" x="95" y="105"/>
@@ -2689,13 +2671,13 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <a name="clabelup" val="north"/>
     <a name="clabelfont" val="SansSerif plain 18"/>
     <appear>
-      <rect fill="#ffffff" height="80" stroke="#ff0000" stroke-width="2" width="90" x="50" y="50"/>
       <polyline fill="none" points="50,74 62,80 50,86" stroke="#000000"/>
       <polyline fill="none" points="50,94 62,100 50,106" stroke="#000000"/>
       <polyline fill="none" points="50,114 62,120 50,126" stroke="#000000"/>
       <polyline fill="none" points="139,83 128,89 139,95 128,100 139,106" stroke="#000000"/>
       <polyline fill="none" points="85,131 90,140 95,131" stroke="#000000"/>
       <polyline fill="none" points="139,54 151,60 139,66" stroke="#000000"/>
+      <rect fill="#ffffff" height="81" stroke="#000000" stroke-width="2" width="93" x="49" y="49"/>
       <circ-port height="8" pin="650,570" width="8" x="46" y="96"/>
       <circ-port height="8" pin="650,600" width="8" x="46" y="116"/>
       <circ-port height="8" pin="140,550" width="8" x="136" y="96"/>
@@ -2898,7 +2880,6 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <polyline fill="none" points="42,54 30,60 42,66" stroke="#000000"/>
       <polyline fill="none" points="63,103 70,89 77,103" stroke="#000000"/>
       <polyline fill="none" points="83,42 90,54 97,42" stroke="#000000"/>
-      <polyline fill="none" points="83,101 90,87 97,101" stroke="#000000"/>
       <circ-port height="8" pin="140,70" width="8" x="36" y="76"/>
       <circ-port height="8" pin="130,510" width="8" x="66" y="96"/>
       <circ-port height="10" pin="640,60" width="10" x="35" y="55"/>

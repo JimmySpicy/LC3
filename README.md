@@ -62,9 +62,11 @@ I added 1 input and 1 output : the previous overflow state, and the overflow gen
 The overflow register can take two values : 
 * 1 if an ADD or ADC has generated an overflow.
 * 0 for all others operations modifying NZP : other ARITH and JUMPS.
-I should test if the current operation if ADD or ADC in order to choose the next state : that's the goal of the multiplexer, whose selecting bit is the result of a checking on the op-code.  
+I should test if the current operation is ADD or ADC in order to choose the next state : that's the goal of the multiplexer, whose selecting bit is the result of a checking on the op-code.  
 But the next state may not be written : the register is updated only if we have an NZP instruction or an ADD/ADC (but they are NZP instructions too).  
-Finally, the state is directed to an output.
+At first, the WriteReg tunnel was an input telling if the registrer should be updated or not. But I had some synchonization troubles : WriteReg is active only during the Exec phase. At the rising edge of the clock input, the register is updated. But as the artihmetic result is written only at the falling edge, the overflow has been changed too soon. I resolved this with two tricks : 
+- the box NZPinst outputs 1 if IR corresponds to a Load or Arith operation (an instruction modifying NZP and O). It is a static checking, so is always active, at the contrary of WriteReg.
+- to resolve the synchronization problem, I put a NOT on the clock input, so that Overflow register is updated at the rising edge of Exec. Thanks to this, at the falling edge, the value of the next ADC is computed (during the Fetch phase) with the good value.
 
 ##RegPC 
 First, RegPC computes PC+1. We then compute PC+[SEXT(off9)] for BR. I placed a multiplexer here, because if BR's test fails, the next adresse should be PC+1 anyway. 
