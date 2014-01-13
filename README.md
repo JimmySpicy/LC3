@@ -29,7 +29,7 @@ JMP is implemented in the RegPC circuit
 ADC is implemented in the ALU, and the overflow has its own circuit : overflow.
 
 ##JSR
-not implemented
+
 
 ##JSRR
 not implemented
@@ -83,6 +83,11 @@ A selection is performed on PC+[SEXT(off9)] and BR+[SEXT(off6)] if the op-code l
 ##LoadAddr
 During a load instruction, we must be aware of the data we should write into a register : in case of LEA, it is simply PC+[SEXT(off9)], for LD/LDR it is the content given by the memory (the frame is computed by GetAddr, and is tunneled via MemOut).  
 TO make the choice, we simply check if the current instruction is LEA (the bits 15 and 14 are both 1) or not. The output is the filtered data, and will be choosen as "result" for a register in case of Load instruction.
+
+##Registres
+Two inputs have been added : Opcode and JSRaddr (the return address to write in R7, coming from RegPC).  
+Opcode is just here to check if the instruction is a JSR : in this case, at the next Exec, R7 will take the value of JSRaddr. 
+But we should let users play with R7, so a multiplexer is here to take as second input, the result of regular operations, when WriteReg is active (watch the OR). 
 
 ===
 #Tests
